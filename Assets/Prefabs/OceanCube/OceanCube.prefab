@@ -64,6 +64,9 @@ MonoBehaviour:
   cube_mask:
     serializedVersion: 2
     m_Bits: 256
+  is_tree_one: 0
+  tree_one: {fileID: 1433522911625985607, guid: c950aca45627e274eb1021533c75a40f,
+    type: 3}
 --- !u!1 &7162031331424892126
 GameObject:
   m_ObjectHideFlags: 0

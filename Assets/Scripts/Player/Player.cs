@@ -87,7 +87,6 @@ public class Player : MonoBehaviour
                 c.SetPlayer(this);
                 return;
             }
-            
             current_cube = c;
             current_cube.SetPlayer(this);
 

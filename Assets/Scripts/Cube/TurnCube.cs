@@ -12,7 +12,7 @@ public class TurnCube : Cube
     [SerializeField] private Transform arrow_object;
     [SerializeField] private Direction direction;
     private float turn_degreed = 90f;
-
+    
     private void Start() 
     {
         switch(direction)
@@ -132,17 +132,14 @@ public class TurnCube : Cube
     {
         if(isCor)
             yield break;
-
         isCor = true;
 
         yield return new WaitForSeconds(player.GetSpeed());
-        
         Ray ray = new Ray(transform.position, GetDirection());
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit, cube_mask)) 
         {
             Cube c = hit.transform.GetComponent<Cube>();
-
             // Set Player's Target Position To Next Cube
             for(int i=0; i<players.Count; i++)
             {

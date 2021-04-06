@@ -4,22 +4,40 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager m_Instance;
+    public static GameManager Instance { get { return m_Instance; } }
+
     [HideInInspector] public Player player;
+
+
+    // UI Stuff
+    // Testing
+    public GameObject Dialogue;
+
 
     private IGameState current_state;
     public Dictionary<string, IGameState> state_cache { get; private set; }
 
-    private void Start() 
+    private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        if(m_Instance != null && !m_Instance != this)
+            Destroy(this.gameObject);
+        else
+            m_Instance = this;
 
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        
         state_cache = new Dictionary<string, IGameState>()
         {
             { "Playing", new PlayingState(this) },
-            { "NPC", new NPCState(this) }
+            { "NPC", new NPCState(this) },
+            { "DIA", new DialogueState(this) }
         };
-
         current_state = state_cache["Playing"];
+    }
+
+    private void Start() 
+    {
         current_state.OnStart();
     }
 
