@@ -10,6 +10,10 @@ public class Cube : MonoBehaviour
     [SerializeField] protected LayerMask cube_mask;
 
 
+    [Header("測試NPC")]
+    [SerializeField] private bool is_test_npc;
+    [SerializeField] private GameObject test_npc;
+
     [Header("凍頂烏龍茶樹")]
     [SerializeField] bool is_tree_one;
     [SerializeField] private GameObject tree_one;
@@ -84,9 +88,14 @@ public class Cube : MonoBehaviour
 
     private void InitTree() 
     {
-        if(is_tree_one) {
+        if(is_tree_one){
             Instantiate(tree_one, player_position.position, Quaternion.identity);
         }
+
+        if(is_test_npc){
+            Instantiate(test_npc, player_position.position, Quaternion.identity);
+        }
+        
     }
 
     public bool HasPlayer() => players.Count > 0;

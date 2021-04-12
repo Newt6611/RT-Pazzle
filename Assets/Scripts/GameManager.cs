@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     private IGameState current_state;
     public Dictionary<string, IGameState> state_cache { get; private set; }
 
+    [SerializeField] private Animator animator;
+
     private void Awake()
     {
         if(m_Instance != null && !m_Instance != this)
@@ -56,5 +58,12 @@ public class GameManager : MonoBehaviour
         current_state.OnShutDown();
         current_state = _state;
         current_state.OnStart();
+    }
+
+    public void ShowDialogue()
+    {
+        Dialogue.SetActive(true);
+        //animator.SetBool("is_dia", true);
+        animator.Play("ShowDialogue");
     }
 }

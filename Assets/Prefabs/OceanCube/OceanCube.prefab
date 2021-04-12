@@ -64,6 +64,8 @@ MonoBehaviour:
   cube_mask:
     serializedVersion: 2
     m_Bits: 256
+  is_test_npc: 0
+  test_npc: {fileID: 986024041419390565, guid: 3b06faee76de89a4199737918a687e72, type: 3}
   is_tree_one: 0
   tree_one: {fileID: 1433522911625985607, guid: c950aca45627e274eb1021533c75a40f,
     type: 3}
